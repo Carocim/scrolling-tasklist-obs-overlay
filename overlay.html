@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task Overlay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+            background: transparent;
+            color: #ffffff;
+            overflow: hidden;
+            height: 100vh;
+            user-select: none;
+            -webkit-transform: translateZ(0);
+            -webkit-app-region: no-drag;
+        }
+
+        .overlay-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            -webkit-app-region: no-drag;
+        }
+
+        .drag-handle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            cursor: move;
+            z-index: 100;
+            -webkit-app-region: drag;
+        }
+
+        .stream-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .stream-title {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .stream-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .scrolling-content {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+
+        .task-stream {
+            position: absolute;
+            width: 100%;
+            padding: 0 16px;
+            top: 0;
+            bottom: 0;
+        }
+
+        .task-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: infiniteScroll 30s linear infinite;
+        }
+
+        .task-list.duplicate {
+            animation-delay: -15s;
+        }
+
+        .task-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            padding: 12px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .task-item.priority-high {
+            border-left-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .task-item.priority-medium {
+            border-left-color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .task-item.priority-low {
+            border-left-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .task-item.completed {
+            opacity: 0.4;
+            text-decoration: line-through;
+            border-left-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+
+        .task-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.3;
+            flex: 1;
+            word-wrap: break-word;
+        }
+
+        .task-priority {
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .priority-high { 
+            background: rgba(255, 255, 255, 0.2); 
+            color: #e45757; 
+        }
+        .priority-medium { 
+            background: rgba(255, 255, 255, 0.15); 
+            color: rgba(255, 225, 0, 0.879); 
+        }
+        .priority-low { 
+            background: rgba(255, 255, 255, 0.1); 
+            color: rgba(94, 254, 99, 0.6); 
+        }
+
+        .task-description {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
+
+        @keyframes infiniteScroll {
+            0% { transform: translateY(0%); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .no-tasks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .no-tasks small {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay-container">
+        <div class="drag-handle"></div>
+        
+        <div class="stream-header">
+            <div class="stream-title">TASK LIST</div>
+            <div class="stream-stats">
+                <span>TOTAL: <span id="totalTasks">0</span></span>
+                <span>ACTIVE: <span id="activeTasks">0</span></span>
+                <span>DONE: <span id="completedTasks">0</span></span>
+            </div>
+        </div>
+        
+        <div class="scrolling-content">
+            <div class="task-stream">
+                <div class="task-list" id="taskList">
+                    <!-- Tasks will be rendered here -->
+                </div>
+                <div class="task-list duplicate" id="taskListDuplicate">
+                    <!-- Duplicate tasks for seamless scrolling -->
+                </div>
+            </div>
+            <div class="no-tasks" id="noTasks" style="display: none;">
+                NO TASKS AVAILABLE<br>
+                <small>USE CONTROL PANEL TO ADD TASKS</small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+        
+        let tasks = [];
+        let scrollSpeed = 30;
+
+        async function initializeOverlay() {
+            tasks = await ipcRenderer.invoke('get-tasks');
+            renderTasks();
+            updateStats();
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            const taskListDuplicate = document.getElementById('taskListDuplicate');
+            const noTasks = document.getElementById('noTasks');
+            
+            if (tasks.length === 0) {
+                noTasks.style.display = 'block';
+                taskList.innerHTML = '';
+                taskListDuplicate.innerHTML = '';
+                return;
+            }
+            
+            noTasks.style.display = 'none';
+            
+            // Create task HTML - removed the ID display
+            const taskHTML = tasks.map(task => `
+                <div class="task-item ${task.completed ? 'completed' : ''} priority-${task.priority}">
+                    <div class="task-header">
+                        <div class="task-title">${task.title}</div>
+                        <div class="task-priority priority-${task.priority}">${task.priority}</div>
+                    </div>
+                    <div class="task-description">${task.description}</div>
+                    <div class="task-meta">
+                        <span>${task.createdAt}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Render tasks multiple times to fill the scroll area
+            const repeatedTasks = taskHTML.repeat(3);
+            taskList.innerHTML = repeatedTasks;
+            taskListDuplicate.innerHTML = repeatedTasks;
+            
+            // Set animation duration
+            taskList.style.animationDuration = `${scrollSpeed}s`;
+            taskListDuplicate.style.animationDuration = `${scrollSpeed}s`;
+        }
+
+        function updateStats() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.completed).length;
+            const active = total - completed;
+            
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('activeTasks').textContent = active;
+            document.getElementById('completedTasks').textContent = completed;
+        }
+
+        // Listen for updates from control window
+        ipcRenderer.on('tasks-updated', (event, updatedTasks) => {
+            tasks = updatedTasks;
+            renderTasks();
+            updateStats();
+        });
+
+        ipcRenderer.on('speed-updated', (event, speed) => {
+            scrollSpeed = speed;
+            renderTasks();
+        });
+
+        // Initialize the overlay
+        initializeOverlay();
+    </script>
+</body>
+</html>
