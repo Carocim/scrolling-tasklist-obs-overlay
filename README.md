@@ -16,6 +16,15 @@ This guide includes:
 
 ---
 
+## How to Download This Project
+
+1. Click the green **“Code”** button on this page  
+2. Select **“Download ZIP”**  
+3. Extract the folder somewhere you can find it (e.g., your Desktop)  
+4. Follow the setup instructions below for your operating system
+
+---
+
 ## For Windows Users
 
 ### Requirements:
