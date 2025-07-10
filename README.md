@@ -243,5 +243,5 @@ If you found this project helpful and want to support my work, you can buy me a 
 
 https://ko-fi.com/carocim
 
-I’m a student who built this while studying for my board exams Coding this helped me stay focused, and now I’m sharing it in case it helps you too.
-Every coffee helps me keep creating tools for fellow learners and streamers!
+I’m a student who built this while studying for my board exam. Coding this helped me stay focused, and now I’m sharing it in case it helps you too.
+Every donation helps me keep creating tools for fellow learners and streamers!
