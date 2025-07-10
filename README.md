@@ -89,7 +89,8 @@ You should see version numbers.
 ### 2. Set up the overlay
 
 1. Open Finder and locate the extracted folder
-2. Right-click it > “New Terminal at Folder”
+2. Open Terminal, then type `cd ` (with a space), and drag the project folder into the Terminal window.  
+It will autofill the path. Press **Enter** to move into the folder.
 3. Run this in the terminal:
 
 ```
