@@ -129,10 +129,12 @@ This opens:
 
 ### Optional: Add to OBS
 
-1. Open OBS
-2. Add a **Window Capture** source
-3. Select the overlay window
-4. Resize or crop as needed
+
+1. Open Task List overlay and control panel → enable OBS mode
+2. Open OBS
+3. Add a **Window Capture** source
+4. Select the overlay window
+5. Resize or crop as needed
 
 ---
 
