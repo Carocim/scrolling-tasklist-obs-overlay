@@ -145,6 +145,7 @@ This opens:
 cd path-to-folder
 ```
 (You can drag the folder again to autofill the path.)
+
 3. Run:
 
 ```bash
