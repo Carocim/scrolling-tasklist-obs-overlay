@@ -127,11 +127,12 @@ This will launch:
 ---
 
 ## Using the App (All Platforms)
-<img width="1041" height="845" alt="Screenshot 2025-07-11 at 6 44 36 AM" src="https://github.com/user-attachments/assets/0294a63b-d578-46cc-8655-c5b9f5a1496e" />
+<img width="1057" height="846" alt="Screenshot 2025-07-15 at 1 36 56 PM" src="https://github.com/user-attachments/assets/985be4bd-6ea6-47d4-83fc-761c83464047" />
 
 ### The Overlay
 
 - Displays your tasks scrolling upward
+- Percentage bar to show your progress
 - Transparent background
 - Draggable by the top header
 
