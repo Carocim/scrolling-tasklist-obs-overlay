@@ -18,7 +18,7 @@ This guide includes:
 
 ## How to Download This Project
 
-1. Click the zip files appropriate to your OS 
+1. Click the zip file appropriate to your OS
 2. Extract the folder somewhere you can find it (e.g., your Desktop)  
 3. Follow the setup instructions below for your operating system
 
@@ -73,6 +73,11 @@ This will launch:
 4. Select the Electron overlay window
 5. Crop/resize as you like
 
+### 5. How to Run the Task Overlay Again Next Time
+
+1. Open Command Prompt, then type `cd ` (with a space), and drag the project folder again into the Command Prompt window. Press **Enter**
+2. Start the overlay by typing: `npm start`
+
 ---
 
 ## For macOS Users
@@ -122,6 +127,11 @@ This will launch:
 2. Add a **Window Capture** source
 3. Select the Electron overlay window
 4. Crop and position as needed
+
+### 5. How to Run the Task Overlay Again Next Time
+
+1. Open Terminal, then type `cd ` (with a space), and drag the project folder again into the Terminal window. Press **Enter**
+2. Start the overlay by typing: `npm start`
 
 ---
 
