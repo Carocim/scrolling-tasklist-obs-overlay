@@ -2,6 +2,14 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
+
+// Prevent background throttling and occlusion-related rendering stops
+app.commandLine.appendSwitch('disable-renderer-backgrounding');
+app.commandLine.appendSwitch('enable-native-gpu-memory-buffers');
+app.commandLine.appendSwitch('disable-background-timer-throttling');
+app.commandLine.appendSwitch('disable-backgrounding-occluded-windows');
+app.commandLine.appendSwitch('disable-low-res-tiling');
+
 app.commandLine.appendSwitch('force-color-profile', 'sRGB');
 app.commandLine.appendSwitch('enable-features', 'CoreGraphicsCapture');
 
@@ -74,11 +82,14 @@ function createOverlayWindow() {
     backgroundColor: '#0d0d0d00',
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      backgroundThrottling: false
     }
   });
 
   overlayWindow.loadFile('overlay.html');
+  overlayWindow.webContents.setVisualEffectState?.('active');
+  overlayWindow.setAlwaysOnTop(false); // Ensure it's allowed to be covered
   overlayWindow.setIgnoreMouseEvents(false);
 }
 
