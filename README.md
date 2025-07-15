@@ -49,7 +49,7 @@ If you see version numbers, you're ready.
 1. Extract the folder you downloaded from GitHub
 2. Open **Command Prompt,** then type `cd ` (with a space), and drag the project folder into the Command Prompt window.  
 It will autofill the path. Press **Enter** to move into the folder.
-3. Run this in the command prompt:
+3. Then type and enter:
 
 ```
 npm install
@@ -105,7 +105,7 @@ You should see version numbers.
 1. Open Finder and locate the extracted folder
 2. Open Terminal, then type `cd ` (with a space), and drag the project folder into the Terminal window.  
 It will autofill the path. Press **Enter** to move into the folder.
-3. Run this in the terminal:
+3. Then type and enter:
 
 ```
 npm install
