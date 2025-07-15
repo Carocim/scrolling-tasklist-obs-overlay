@@ -1,74 +1,20 @@
 [
   {
     "id": 1,
-    "title": "clinical chemistry",
-    "description": "enzymology, endrocrinology, tdm",
+    "title": "sample task 1",
+    "description": "sample description",
     "priority": "high",
     "completed": false,
     "createdAt": "7/10/2025, 1:36:36 PM"
   },
   {
     "id": 2,
-    "title": "blood banking",
-    "description": "1st read",
+    "title": "sample task 2",
+    "description": "put anything here",
     "priority": "low",
     "completed": true,
     "createdAt": "7/10/2025, 1:36:47 PM"
   },
   {
-    "id": 3,
-    "title": "clinical microscopy",
-    "description": "urine, other body fluids, post tests",
-    "priority": "high",
-    "completed": false,
-    "createdAt": "7/10/2025, 1:37:10 PM"
-  },
-  {
-    "id": 4,
-    "title": "molbio",
-    "description": "1st read",
-    "priority": "medium",
-    "completed": false,
-    "createdAt": "7/10/2025, 1:37:19 PM"
-  },
-  {
-    "id": 5,
-    "title": "histopath",
-    "description": "1st read",
-    "priority": "high",
-    "completed": false,
-    "createdAt": "7/10/2025, 1:37:30 PM"
-  },
-  {
-    "id": 6,
-    "title": "finish mtlb lecture",
-    "description": "around 4 hrs left",
-    "priority": "low",
-    "completed": false,
-    "createdAt": "7/10/2025, 1:37:42 PM"
-  },
-  {
-    "id": 7,
-    "title": "feed cats",
-    "description": "around 8:30pm",
-    "priority": "low",
-    "completed": true,
-    "createdAt": "7/10/2025, 3:42:25 PM"
-  },
-  {
-    "id": 8,
-    "title": "print wallnotes",
-    "description": "cm, micro, hema, isbb",
-    "priority": "low",
-    "completed": false,
-    "createdAt": "7/11/2025, 2:25:28 AM"
-  },
-  {
-    "id": 9,
-    "title": "bring out trash",
-    "description": "BEFORE 9",
-    "priority": "high",
-    "completed": false,
-    "createdAt": "7/11/2025, 4:31:33 AM"
   }
 ]
