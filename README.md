@@ -18,10 +18,9 @@ This guide includes:
 
 ## How to Download This Project
 
-1. Click the green **“Code”** button on this page  
-2. Select **“Download ZIP”**  
-3. Extract the folder somewhere you can find it (e.g., your Desktop)  
-4. Follow the setup instructions below for your operating system
+1. Click the zip files appropriate to your OS 
+2. Extract the folder somewhere you can find it (e.g., your Desktop)  
+3. Follow the setup instructions below for your operating system
 
 ---
 
@@ -48,8 +47,9 @@ If you see version numbers, you're ready.
 ### 2. Set up the overlay
 
 1. Extract the folder you downloaded from GitHub
-2. Right-click the folder > “Open in Terminal” or "Open PowerShell"
-3. Run:
+2. Open **Command Prompt,** then type `cd ` (with a space), and drag the project folder into the Command Prompt window.  
+It will autofill the path. Press **Enter** to move into the folder.
+3. Run this in the command prompt:
 
 ```
 npm install
@@ -58,7 +58,7 @@ npm install
 ### 3. Run the app
 
 ```
-npx electron .
+npm start
 ```
 
 This will launch:
@@ -67,10 +67,10 @@ This will launch:
 
 ### 4. Add to OBS (Optional)
 
-1. Open OBS
-2. Click ➕ and choose **Window Capture**
-3. Select the Electron overlay window
-4. Enable “Allow Transparency” (if needed)
+1. Open Task List overlay and enable OBS mode
+2. Open OBS
+3. Click ➕ and choose **Window Capture**
+4. Select the Electron overlay window
 5. Crop/resize as you like
 
 ---
@@ -109,7 +109,7 @@ npm install
 ### 3. Run the app
 
 ```
-npx electron .
+npm start
 ```
 
 This will launch:
@@ -121,8 +121,7 @@ This will launch:
 1. Open OBS
 2. Add a **Window Capture** source
 3. Select the Electron overlay window
-4. Enable “Allow Transparency”
-5. Crop and position as needed
+4. Crop and position as needed
 
 ---
 
