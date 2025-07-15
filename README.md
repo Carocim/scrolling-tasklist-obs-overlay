@@ -18,7 +18,7 @@ This guide includes:
 
 ## How to Download This Project
 
-1. Click the zip file appropriate to your OS
+1. Download the .zip file for your system
 2. Extract the folder somewhere you can find it (e.g., your Desktop)  
 3. Follow the setup instructions below for your operating system
 
@@ -46,9 +46,8 @@ If you see version numbers, you're ready.
 
 ### 2. Set up the overlay
 
-1. Extract the folder you downloaded from GitHub
-2. Open **Command Prompt,** then type `cd ` (with a space), and drag the project folder into the Command Prompt window.  
-It will autofill the path. Press **Enter** to move into the folder.
+1. Extract the downloaded .zip folder
+2. Open **Command Prompt,** type `cd ` (with a space), then drag the project folder into the Command Prompt window → Press **Enter**.
 3. Then type and enter:
 
 ```
@@ -62,18 +61,18 @@ npm start
 ```
 
 This will launch:
-- The overlay window (scrolling task list)
-- The control panel window (edit tasks)
+- The scrolling overlay window
+- The control panel to manage tasks
 
 ### 4. Add to OBS (Optional)
 
-1. Open Task List overlay and enable OBS mode
+1. Open Task List overlay and control panel → enable OBS mode
 2. Open OBS
-3. Click ➕ and choose **Window Capture**
+3. Add a **Window Capture** source
 4. Select the Electron overlay window
 5. Crop/resize as you like
 
-### 5. How to Run the Task Overlay Again Next Time
+### 5. How to Launch Again
 
 1. Open Command Prompt, then type `cd ` (with a space), and drag the project folder again into the Command Prompt window. Press **Enter**
 2. Start the overlay by typing: `npm start`
@@ -82,58 +81,78 @@ This will launch:
 
 ## For macOS Users
 
-### Requirements:
-- macOS Ventura or newer (recommended)
-- Node.js installed
+### Requirements
+- macOS Ventura or newer
+- [Node.js (LTS)](https://nodejs.org) installed
 
-### 1. Install Node.js
+### Step 1: Install Node.js
 
-Go to https://nodejs.org  
-Download the **LTS version** for macOS (`.pkg`) and install it.
+1. Go to [https://nodejs.org](https://nodejs.org)
+2. Download the **LTS version for macOS (.pkg)**
+3. Install it using the default settings
 
-Then open **Terminal** and type:
+Then open **Terminal** and check:
 
-```
+```bash
 node -v
 npm -v
 ```
 
-You should see version numbers.
+If you see version numbers, you're good to go.
 
-### 2. Set up the overlay
+---
 
-1. Open Finder and locate the extracted folder
-2. Open Terminal, then type `cd ` (with a space), and drag the project folder into the Terminal window.  
-It will autofill the path. Press **Enter** to move into the folder.
-3. Then type and enter:
+### Step 2: Set Up the Project
 
-```
+1. Extract the folder you downloaded.
+2. Open **Terminal**
+3. Type `cd ` (with a space), then drag the extracted folder into the Terminal window. Press **Enter**.
+4. Run:
+
+```bash
 npm install
 ```
 
-### 3. Run the app
+---
 
-```
+### Step 3: Run the App
+
+```bash
 npm start
 ```
 
-This will launch:
-- The transparent overlay window
-- The task control panel window
+This opens:
+- **The overlay** — scrolling transparent task window
+- **The control panel** — where you manage tasks
 
-### 4. Add to OBS (Optional)
+---
+
+### Optional: Add to OBS
 
 1. Open OBS
 2. Add a **Window Capture** source
-3. Select the Electron overlay window
-4. Crop and position as needed
-
-### 5. How to Run the Task Overlay Again Next Time
-
-1. Open Terminal, then type `cd ` (with a space), and drag the project folder again into the Terminal window. Press **Enter**
-2. Start the overlay by typing: `npm start`
+3. Select the overlay window
+4. Resize or crop as needed
 
 ---
+
+### To Run Again Later
+
+1. Open **Terminal**
+2. Navigate to the folder:
+
+```bash
+cd path-to-folder
+```
+(You can drag the folder again to autofill the path.)
+3. Run:
+
+```bash
+npm start
+```
+
+---
+
 
 ## Using the App (All Platforms)
 <img width="1057" height="846" alt="Screenshot 2025-07-15 at 1 36 56 PM" src="https://github.com/user-attachments/assets/985be4bd-6ea6-47d4-83fc-761c83464047" />
@@ -153,7 +172,7 @@ This will launch:
 - Delete tasks
 - Adjust scroll speed
 
-Changes apply instantly — no restart needed.
+Changes apply instantly, no restart needed.
 
 ---
 
